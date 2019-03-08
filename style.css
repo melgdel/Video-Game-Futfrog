@@ -1,16 +1,25 @@
-
-body{
-  background-image: url(images/Fans1.png);
-  display: flex;
-  justify-content: center;
-    /* Center and scale the image nicely */
-    background-position: none /* Center the image */
-   
+#game_div{
+  text-align: center;
 }
 
-canvas{
-  background: rgb(211, 213, 214);
-  border: 8px solid gray;
-
+canvas {
+  background-color: #c2946c;
+  padding: 5px;
+  margin: 10px;
+  border-width: 60px;
+  border-color: #86947a;
+  border-style: solid;
 }
 
+body {
+  background-image: url("field.png");
+  background-color: #cccccc;
+}
+
+#sprite {
+display: none;
+}
+
+#deadsprite {
+display: none;
+}

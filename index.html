@@ -4,20 +4,19 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>futfrog</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  
 
+
+<title> Frogger Game</title>
+<link rel="stylesheet" href="style.css">
+<script src="game.js"></script>
 </head>
-<body>
-  <canvas id = "canvas" width="800" height="540"></canvas>
-  <script src="Obstacles.js"></script>
-  <script src="scripts.js"></script>
-  <script src="characters.js"></script>
-  
-
-
+<body onload="init_game()">
+<div id="game_div">
+<canvas id="game" height="565" width="800">
+</canvas>
+<img src="assets/frogger_sprites.png" id="sprite" />
+<img src="assets/dead_frog.png" id="deadsprite" />
+</div>
 </body>
 </html>
