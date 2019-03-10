@@ -9,11 +9,11 @@ canvas {
   border-width: 60px;
   border-color: #86947a;
   border-style: solid;
+ 
 }
 
 body {
-  background-image: url("field.png");
-  background-color: #cccccc;
+  border-color: #86947a; 
 }
 
 #sprite {
@@ -23,3 +23,9 @@ display: none;
 #deadsprite {
 display: none;
 }
+
+#car1{
+  display: none;
+  }
+
+
