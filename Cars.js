@@ -14,7 +14,7 @@ function init_cars() {
 	vars.car = new Array();
 	vars.car.spacing = 90;
 	vars.car[0] = {};
-	vars.car[0].pX = 800;
+	vars.car[0].pX = 1000;
 	vars.car[0].pY = 460;
 	vars.car[0].speed = -0.8;
 	vars.car[0].len = 50;
@@ -43,25 +43,24 @@ function init_cars() {
 // draws the game's cars */
 function drawCars() {
 	//ROW 1
-	ctx.drawImage(car1,0,0,170,116,vars.car[0].pX,vars.car[0].pY,28,24);
-
-	ctx.drawImage(sprite,10,267,28,20,vars.car[0].pX + vars.car[0].len + vars.car.spacing,
-				 vars.car[0].pY,28,20);
+	ctx.drawImage(car1,0,0,150,110,vars.car[0].pX,vars.car[0].pY,28,24);
+	ctx.drawImage(car1,0,0,150,110,vars.car[0].pX + vars.car[0].len + vars.car.spacing,
+				 vars.car[0].pY,28,24);
 	//ROW 2
-	ctx.drawImage(sprite,46,265,28,24,vars.car[1].pX,vars.car[1].pY,28,24);
- ctx.drawImage(sprite,46,265,28,24,vars.car[1].pX - vars.car.spacing - vars.car[1].len,
+	ctx.drawImage(car2,0,0,90,70,vars.car[1].pX,vars.car[1].pY,28,24);
+  ctx.drawImage(car2,0,0,90,70,vars.car[1].pX - vars.car.spacing - vars.car[1].len,
 				  vars.car[1].pY,28,24);
 	//ROW 3
-	ctx.drawImage(sprite,82,264,24,26,vars.car[2].pX,vars.car[2].pY,24,26);
-  ctx.drawImage(sprite,82,264,24,26,vars.car[2].pX + vars.car[2].len + vars.car.spacing,
-				  vars.car[2].pY,24,26);
+	ctx.drawImage(car3,0,0,90,116,vars.car[2].pX,vars.car[2].pY,28,26);
+  ctx.drawImage(car3,0,0,90,116,vars.car[2].pX + vars.car[2].len + vars.car.spacing,
+				  vars.car[2].pY,28,26);
 	//ROW 4
-	ctx.drawImage(sprite,73,301,25,22,vars.car[3].pX,vars.car[3].pY,25,22);
-	ctx.drawImage(sprite,73,301,25,22,vars.car[3].pX - vars.car.spacing - vars.car[3].len,
+	ctx.drawImage(car5,0,0,95,116,vars.car[3].pX,vars.car[3].pY,25,22);
+	ctx.drawImage(car5,0,0,95,116,vars.car[3].pX - vars.car.spacing - vars.car[3].len,
 				  vars.car[3].pY,25,22);
 	//ROW 5
-	ctx.drawImage(sprite,106,302,46,18,vars.car[4].pX,vars.car[4].pY,46,18);
-	ctx.drawImage(sprite,106,302,46,18,vars.car[4].pX + vars.car[4].len + vars.car.spacing,
+	ctx.drawImage(car4,0,0,160,120,vars.car[4].pX,vars.car[4].pY,46,18);
+	ctx.drawImage(car4,0,0,170,110,vars.car[4].pX + vars.car[4].len + vars.car.spacing,
 				 vars.car[4].pY,46,18);}
 
 /* checks if the frog has been run over by a car. calls a function depending on the row
@@ -183,10 +182,10 @@ function moveCars() {
 		vars.car[0].pX = 800;	//right edge of canvas
 	}
 	else {
-		vars.car[0].pX += vars.car[0].speed ;
+		vars.car[0].pX += vars.car[2].speed ;
 	}
 	//ROW 2 goes right
-	if (vars.car[1].pX > 530) {
+	if (vars.car[1].pX > 950) {
 		vars.car[1].pX = -vars.car[1].len;
 	}
 	else {
@@ -200,7 +199,7 @@ function moveCars() {
 		vars.car[2].pX += vars.car[2].speed;
 	}
 	//ROW 4 goes right
-	if (vars.car[3].pX > 520) {
+	if (vars.car[3].pX > 1000) {
 		vars.car[3].pX = -vars.car[3].len;
 	}
 	else {

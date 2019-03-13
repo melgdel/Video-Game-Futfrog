@@ -16,7 +16,7 @@ function init_game() {
 function rungame(ctx) {
 	vars = new Object();
 	vars.highscore = 0;
-	//add_audio();
+	add_audio();
 	initialize();
 	
     var ONE_FRAME_TIME = 1000 / 60 ;
@@ -60,7 +60,7 @@ function keypress() {
 		case 37: 		//LEFT
 			if (vars.frogX > 17) {
 				vars.frogX = vars.frogX - 15;
-				//jumpSound.play();
+				jumpSound.play();
 			}
 			break;
 		case 38: 		//UP
@@ -83,7 +83,7 @@ function keypress() {
 					}
 				}
 				vars.frogY = vars.frogY - 34;
-				//jumpSound.play();
+				jumpSound.play();
 			}
 			break;
 		case 39: 		//RIGHT
@@ -95,9 +95,9 @@ function keypress() {
 		case 40:		//DOWN
 			if (vars.frogY < 490) {
 				vars.frogY = vars.frogY + 34;
-				//jumpSound.play();
+				jumpSound.play();
 			}
-			break;
+			break; 
 		}
 	}
 	});
@@ -116,8 +116,8 @@ function restartGame() {
 
 /* loads audio files for play in game */
 function add_audio() {
-	//jumpSound = new Audio('assets/jumpsound.m4a');
-	//deathSound = new Audio('assets/deathsound.m4a');
+	jumpSound = new Audio('assets/jumpsound.m4a');
+	deathSound = new Audio('assets/deathsound.m4a');
 }
 
 /* Calls functions to initialize parameters for game status, lives, time, score,
@@ -129,7 +129,7 @@ function initialize(){
 	vars.frogX = 350;
 	vars.frogY = 494;
 
-	init_cars(); //lillo
+	init_cars(); 
 	init_logs();
 	//init_fly();
 }
@@ -161,17 +161,16 @@ function init_timeandscore() {
 
 
 /* draws the game background and calls functions to draw additional items including
-   cars, logs, a fly, lives, and text */
+   cars, logs, lives, and text */
 function draw(ctx) {
 	//draws the background
 	ctx.fillStyle="#B6C8D8";
 	ctx.fillRect(0,0,800,300);
-	ctx.fillStyle="#84858D";
+	ctx.fillStyle="#5e7a45";
 	ctx.fillRect(0,300,800,300);
-	
-	//sprite = document.getElementById ('sprite');
-	//header image
-	//ctx.drawImage(sprite,0,0,800,110,0,0,800,110);
+
+
+	ctx.drawImage(fans,0,0,405,110,0,0,800,110);
 
 
 	//pathway images
@@ -218,131 +217,6 @@ function drawLives() {
 	}
 }
 
-
-/* draws the game's lily pads */
-function drawLilyPads() {
-	//ctx.fillStyle="00BB00";
-	//ctx.fillRect(20,80,50,20);
-	//ctx.fillRect(10,80,50,20);
-	//ctx.fillRect(20,80,50,20);
-	//ctx.fillRect(105,80,50,20);
-	//ctx.fillRect(187.5,80,50,20);
-  //ctx.fillRect(271,80,50,20);
-	//ctx.fillRect(356.5,80,50,20);
-	
-	ctx.fillStyle="00EE00";
-	ctx.fillRect(10,55,6,6);
-	ctx.fillRect(109.5,55,6,6);
-	ctx.fillRect(194.5,55,6,6);
-	ctx.fillRect(278,55,6,6);
-	ctx.fillRect(363.5,55,6,6);
-	
-	//ctx.fillRect(400,55,6,6);
-	//ctx.fillRect(470.5,55,6,6);
-	//ctx.fillRect(500.5,,6,6);
-	//ctx.fillRect(278,87,6,6);
-	//ctx.fillRect(363.5,87,6,6);
-
-	// If Frogger has landed on a Lily Pad, draw him on it
-	if (vars.checkH1 == true) {
-		ctx.drawImage(sprite,12,369,23,17,15.5,81.5,23,17);
-	}
-	if (vars.checkH2 == true) {
-		ctx.drawImage(sprite,12,369,23,17,101,81.5,23,17);
-	}
-	if (vars.checkH3 == true) {
-		ctx.drawImage(sprite,12,369,23,17,186,81.5,23,17);
-	}
-	if (vars.checkH4 == true) {
-		ctx.drawImage(sprite,12,369,23,17,269.5,81.5,23,17);
-	}
-	if (vars.checkH5 == true) {
-		ctx.drawImage(sprite,12,369,23,17,354,81.5,23,17);
-	}
-}
-
-
-/* draws text at the bottom of the screen with game info */
-function drawText() {
-	ctx.font = "bold 15pt arial";
-	ctx.fillStyle="#0FD183";
-	//ctx.fillText("Level "+vars.level,100,545);
-	ctx.font = "bold 15pt arial";
-	ctx.fillText("Score: "+vars.score,200,562);
-	ctx.fillText("Highscore: "+vars.highscore,500,562);
-	var secondsLeft = 30 - (Math.floor(vars.time/60));
-	secondsLeft.toFixed(0);
-	if ((secondsLeft < 10) && (secondsLeft > 3)) {
-		ctx.fillStyle="#D1B10F";
-	}
-	if (secondsLeft <= 3) {
-		ctx.fillStyle="#0FD1830";
-	}
-	ctx.fillText("Time: " + secondsLeft, 350, 545);
-}
-
-/*checks if the frog has reached a home lily pad */
-function checkHome() {
-	if (vars.frogY < 108) {
-		if ((vars.frogX > 7) && (vars.frogX < 29)) {
-			vars.checkH1 = true;
-			vars.landedFrog = true;
-			if (((vars.flyPresent == true) && vars.flyLilyNum === 1)) {
-				vars.flyBonus = true;
-				vars.lastFlyBonus = Date.now();
-			}
-			frogReset();
-			vars.frogsHome++;
-			return;
-		}
-		if ((vars.frogX > 93) && (vars.frogX < 115)) {
-			vars.checkH2 = true;
-			vars.landedFrog = true;
-			frogReset();
-			if ((vars.flyPresent == true) && (vars.flyLilyNum === 2)) {
-				vars.flyBonus = true;
-				vars.lastFlyBonus = Date.now();
-			}
-			vars.frogsHome++;
-			return;
-		}
-		if ((vars.frogX > 178) && (vars.frogX < 200)) {
-			vars.checkH3 = true;
-			vars.landedFrog = true;
-			frogReset();
-			if ((vars.flyPresent == true) && (vars.flyLilyNum === 3)) {
-				vars.flyBonus = true;
-				vars.lastFlyBonus = Date.now();
-
-			}
-			vars.frogsHome++;
-			return;
-		}
-		if ((vars.frogX > 261) && (vars.frogX < 284)) {
-			vars.checkH4 = true;
-			vars.landedFrog = true;
-			frogReset();
-			if ((vars.flyPresent == true) && (vars.flyLilyNum === 4)) {
-				vars.flyBonus = true;
-				vars.lastFlyBonus = Date.now();
-
-			}
-			vars.frogsHome++;
-			return;
-		}
-		if ((vars.frogX > 348) && (vars.frogX < 368)) {
-			vars.checkH5 = true;
-			vars.landedFrog = true;
-			frogReset();
-			if ((vars.flyPresent == true) && (vars.flyLilyNum === 5)) {
-				vars.flyBonus = true;
-				vars.lastFlyBonus = Date.now();
-			}
-			vars.frogsHome++;
-			return;
-		}
-	}
-} 
 
 /* calls functions to check if the frog has died */
 function checkDead() {
@@ -395,20 +269,6 @@ function checkInBounds() {
 }
 
 
-/* checks if the frog has jumped into the bushes of the header 
-function checkDeathByHeader() {
-	if (   ((vars.frogX > 7) && ((vars.frogX + 17) < 46)) 
-	    || ((vars.frogX > 93) && ((vars.frogX + 17) < 132))
-		|| ((vars.frogX > 178) && ((vars.frogX + 17) < 217))
-		|| ((vars.frogX > 261) && ((vars.frogX + 17) < 301)) 
-		|| ((vars.frogX > 348) && ((vars.frogX + 17) < 385))
-	){
-		return true;
-	}
-	else {
-		loseLife();
-	}
-}*/
 
 /* tracks the time the frog died, and marks the frog dead which will trigger a 1 second
    death animation before reviving the frog with a new life or ending the game. Also 
@@ -451,26 +311,6 @@ function frogReset() {
 		vars.time = 0;
 }	
 
-/* calls for appearances from the fly. The fly is to appear thirty seconds after game
-   start, and stay for thirty seconds. He reappears thirty seconds after being eaten, or
-   thirty seconds after he goes away without being eaten. He appears on a random lily pad
-   not currently inhabited by a frog */
-function isFly() {
-	var currentTime = Date.now();
-	timeSinceFly = currentTime - vars.lastFlyBonus;
-	if ((timeSinceFly >= 30000) && (timeSinceFly <= 60000)) {
-		if (vars.chooseLily == true) {
-			flyLilyRandomizer();
-		}
-		vars.flyPresent = true;
-		return;
-	}
-	if (timeSinceFly >= 60001) {
-		vars.lastFlyBonus = Date.now();
-		vars.chooseLily = true;
-	}
-	vars.flyPresent = false;
-}
 
 /* adds points for various game accomplishments. Changes the highscore as necessary */
 function addPoints() {
@@ -496,24 +336,11 @@ function addPoints() {
 			}
 			vars.newLifeCounter = 0;
 		}
-		/*if (vars.flyBonus == true) {
-			vars.score += 200;
-			vars.newLifeCounter += 200;
-		} */
+	
 		if (vars.score > vars.highscore) {
 			vars.highscore = vars.score;
 		}
 	}
-}
-
-/* empties the lily pads if all five had previously been filled */
-function emptyHomeSlots() {
-	vars.frogsHome = 0;
-	vars.checkH1 = false;
-	vars.checkH2 = false;
-	vars.checkH3 = false;
-	vars.checkH4 = false;
-	vars.checkH5 = false;
 }
 
 /* displays Game Over text and offers the player an opportunity to restart the game */

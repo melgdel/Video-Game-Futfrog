@@ -7,13 +7,13 @@ canvas {
   padding: 5px;
   margin: 10px;
   border-width: 60px;
-  border-color: #86947a;
+  border-color: #b65934;
   border-style: solid;
  
 }
 
 body {
-  border-color: #86947a; 
+  border-color: #5e7a45; 
 }
 
 #sprite {
@@ -28,4 +28,23 @@ display: none;
   display: none;
   }
 
+#car2{
+  display: none;
+    }
+
+#car3{
+  display: none;
+    }
+
+#car4{
+  display:none;
+}
+
+#car5{
+  display:none;
+}
+
+    #fans{
+  display: none;
+  }
 

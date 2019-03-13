@@ -15,12 +15,12 @@ function init_logs() {
 	vars.log[0].pX = 180;		//1 goes left
 	vars.log[0].pY = 252;
 	vars.log[0].loglen = 85;
-	vars.log[0].speed = -0.8;
+	vars.log[0].speed = -0.9;
 	vars.log[1] = {};
 	vars.log[1].loglen = 178;
 	vars.log[1].pX = 250;		//ROW 2 goes right
 	vars.log[1].pY = 218;
-	vars.log[1].speed = 0.9;
+	vars.log[1].speed = 1.0;
 	vars.log[2] = {};
 	vars.log[2].loglen = 117;
 	vars.log[2].pX = 300;		//ROW 3 goes left
@@ -29,7 +29,7 @@ function init_logs() {
 	vars.log[3] = {};
 	vars.log[3].loglen = 85;
 	vars.log[3].pX = 170;		//ROW 4 goes right
-	vars.log[3].pY = 150;
+	vars.log[3].pY = 150; 
 	vars.log[3].speed = 1.3;
 	vars.log[4] = {};
 	vars.log[4].loglen = 178;
@@ -38,7 +38,7 @@ function init_logs() {
 	vars.log[4].speed = 1.5;
 	vars.logrowspaceS = 250;
 	vars.logrowspaceM = 300;
-	vars.logrowspaceL = 350;
+	vars.logrowspaceL = 300;
 }
 
 //draws the game's logs 
@@ -65,35 +65,35 @@ function drawLogs() {
 // moves logs across the screen by adding to their position at a constant rate 
 function moveLogs() {
 	//ROW 1 goes left
-	if (vars.log[0].pX < -365) {
+	if (vars.log[0].pX < -600) {
 		vars.log[0].pX =800;	//right edge of canvas
 	}
 	else {
 		vars.log[0].pX += vars.log[0].speed ;
 	}
 	//ROW 2 goes right
-	if (vars.log[1].pX > 680) {
+	if (vars.log[1].pX > 2000) {
 		vars.log[1].pX = -vars.log[4].loglen;
 	}
 	else {
 		vars.log[1].pX += vars.log[1].speed;
 	}
 	//ROW 3 goes left
-	if (vars.log[2].pX < -280) {
-		vars.log[2].pX = 800;	//right edge of canvas
+	if (vars.log[2].pX < -600) {
+		vars.log[2].pX = 1000;	//right edge of canvas
 	}
 	else {
 		vars.log[2].pX += vars.log[2].speed;
 	}
 	//ROW 4 goes right
-	if (vars.log[3].pX > 665) {
+	if (vars.log[3].pX > 2000) {
 		vars.log[3].pX = -vars.log[3].loglen;
 	}
 	else {
 		vars.log[3].pX += vars.log[3].speed;
 	}
 	//ROW 5 goes right
-	if (vars.log[4].pX > 680) {
+	if (vars.log[4].pX > 2000) {
 		vars.log[4].pX = -vars.log[4].loglen;
 	}
 	else {
