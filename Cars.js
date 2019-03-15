@@ -59,8 +59,8 @@ function drawCars() {
 	ctx.drawImage(car5,0,0,95,116,vars.car[3].pX - vars.car.spacing - vars.car[3].len,
 				  vars.car[3].pY,25,22);
 	//ROW 5
-	ctx.drawImage(car4,0,0,160,120,vars.car[4].pX,vars.car[4].pY,46,18);
-	ctx.drawImage(car4,0,0,170,110,vars.car[4].pX + vars.car[4].len + vars.car.spacing,
+	ctx.drawImage(car4,0,0,175,110,vars.car[4].pX,vars.car[4].pY,46,18);
+	ctx.drawImage(car4,0,0,175,110,vars.car[4].pX + vars.car[4].len + vars.car.spacing,
 				 vars.car[4].pY,46,18);}
 
 /* checks if the frog has been run over by a car. calls a function depending on the row

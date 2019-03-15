@@ -1,4 +1,5 @@
 
+
 /* gets the page canvas, checks for context, and runs the game */
 function init_game() {
 	canvas = document.getElementById ('game');
@@ -78,16 +79,14 @@ function keypress() {
 					if ((vars.checkH4 == true) && ((vars.frogX > 261) && (vars.frogX < 284))) {
 						return;
 					}
-					if ((vars.checkH5 == true) && ((vars.frogX > 348) && (vars.frogX < 368))) {
-						return;
-					}
+			
 				}
 				vars.frogY = vars.frogY - 34;
 				jumpSound.play();
 			}
 			break;
 		case 39: 		//RIGHT
-			if (vars.frogX < 750) {
+			if (vars.frogX < 800) {
 				vars.frogX = vars.frogX + 15;
 				jumpSound.play();
 			}
@@ -142,7 +141,6 @@ function init_gamestatus() {
 	vars.checkH2 = false;
 	vars.checkH3 = false;
 	vars.checkH4 = false;
-	vars.checkH5 = false;
 	vars.frogDead = false;
 	vars.deathTime = 0;
 	vars.gameOver = false;
@@ -164,29 +162,36 @@ function init_timeandscore() {
    cars, logs, lives, and text */
 function draw(ctx) {
 	//draws the background
-	ctx.fillStyle="#B6C8D8";
+	//water
+	ctx.fillStyle="#AFEEEE";
 	ctx.fillRect(0,0,800,300);
-	ctx.fillStyle="#5e7a45";
+	//trophy area 
+	ctx.fillStyle="#BA55D3";
+	ctx.fillRect(50,0,650,110);
+	//field
+	ctx.fillStyle="#3CB371";
 	ctx.fillRect(0,300,800,300);
 
-
-	ctx.drawImage(fans,0,0,405,110,0,0,800,110);
-
-
-	//pathway images
+	//fans
+	ctx.drawImage(fans,6,0,3000,120,0,0,2500,70);
 
 	//purple strip 
+
 	// between water and road
-	ctx.drawImage(sprite,0,119,800,34,0,282,2000,34);
+	ctx.drawImage(dirt,6,0,800,120,0,282,2000,40);
 	ctx.fillStyle="00EE00";
 	ctx.fillRect(10,55,6,6);
 	
 	//what frogger stnads on before road 
-  ctx.drawImage(sprite,0,119,800,34,0,490,2000,34);
+
+	ctx.drawImage(dirt,6,0,800,120,0,490,2000,40);
 	drawLilyPads();
 	drawLives();	
 	drawLogs();
 	drawCars();
+
+
+
 	//Frogger Himself
 	if (vars.gameOver == true) {
 		gameOver();
@@ -196,21 +201,22 @@ function draw(ctx) {
 		ctx.drawImage(deadsprite,5,3,18,24,vars.frogX,vars.frogY,18,24);		
 	}
 	else {
-		ctx.drawImage(sprite,12,369,23,17,vars.frogX,vars.frogY,23,17);
+		//DRAWS 
+		ctx.drawImage(frog,15,15,100,130,vars.frogX,vars.frogY,18,24);
 	}
 	drawText();
 }
-
-/* draws the lives the player has remaining */
+//multiple frogs lives 
+// draws the lives the player has remaining 
 function drawLives() {
 	if ( vars.numLives > 0 ) {
-		ctx.drawImage(sprite,13,334,17,23,0,522,17,23);
+		ctx.drawImage(ball,13,0,1000,1000,0,522,55,50);
 		if ( vars.numLives > 1 ) {
-			ctx.drawImage(sprite,13,334,17,23,20,522,17,23);
+			ctx.drawImage(ball,13,0,1000,1000,30,522,55,50);
 			if ( vars.numLives > 2 ) {
-				ctx.drawImage(sprite,13,334,17,23,40,522,17,23);
+				ctx.drawImage(ball,13,0,1000,1000,60,522,55,50);
 				if ( vars.numLives > 3 ) {
-					ctx.drawImage(sprite,13,334,17,23,60,522,17,23);
+					ctx.drawImage(ball,13,0,1000,1000,90,522,55,50);
 				}
 			}	
 		}
@@ -245,7 +251,7 @@ function checkDead() {
 
 /* checks if time has run out */
 function checkTime() {
-	if (Math.floor(vars.time/60) > 30) {
+	if (Math.floor(vars.time/60) > 40) {
 		loseLife();
 	}
 	else return true;
@@ -320,8 +326,10 @@ function addPoints() {
 			vars.newLifeCounter += 10; 
 		}
 		if (vars.landedFrog == true) {
+			console.log("aqui");
+			
 			vars.score += 50;
-			vars.score += 10*(30 - Math.floor(vars.timeatreset/60));
+			vars.score += 10*(40 - Math.floor(vars.timeatreset/60)-1);
 			vars.newLifeCounter += 10; 
 			if (vars.frogsHome === 5) {
 				vars.score += 1000;
@@ -345,11 +353,11 @@ function addPoints() {
 
 /* displays Game Over text and offers the player an opportunity to restart the game */
 function gameOver() {
+
+	ctx.drawImage(redflag,260,180,300,250);
 	ctx.font = "bold 50pt Georgia";
-	ctx.fillStyle="#4B0082";	
-	ctx.fillText("G a m e O v e r !!!",150,300);
-	ctx.font = "20pt Georgia";
-	ctx.fillStyle="#4B0082";
-	ctx.fillText("Hit ENTER to start a new game!", 250, 350);
+	ctx.font = "30pt Georgia";
+	ctx.fillStyle="#000000";
+	ctx.fillText("Hit ENTER to start a new game!", 150, 150);
 	ctx.drawImage(deadsprite,5,3,18,24,vars.frogX,vars.frogY,18,24);		
 }

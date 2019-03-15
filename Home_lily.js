@@ -12,29 +12,30 @@ function drawLilyPads() {
   
   ctx.fillStyle="#0FD1830";
   
-  ctx.fillRect(105,90,50,20);
-  
-  ctx.fillRect(271,90,50,20);
-  
-  ctx.fillRect(438,90,50,20);
+	ctx.drawImage(trophy1,105,80,40,30);
 	
-  ctx.fillRect(605,90,50,20);
+  ctx.drawImage(trophy2,271,80,40,30);
+  
+  ctx.drawImage(trophy3,438,80,40,30);
+	
+	ctx.drawImage(trophy4,605,80,40,30);
   
 	
 	
 
 	// If Frogger has landed on a Lily Pad, draw him on it
-	if (vars.checkH1 == true) {
-		ctx.drawImage(sprite,12,369,23,17,103,81.5,23,17);
+  
+  if (vars.checkH1 == true) {
+		ctx.drawImage(frog,0,0,23,17,103,81.5,23,17);
 	}
 	if (vars.checkH2 == true) {
-		ctx.drawImage(sprite,12,369,23,17,269,81.5,23,17);
+	ctx.drawImage(frog,0,0,23,17,269,81.5,23,17);
 	}
 	if (vars.checkH3 == true) {
-		ctx.drawImage(sprite,12,369,23,17,436,81.5,23,17);
+	ctx.drawImage(frog,0,0,23,17,436,81.5,23,17);
 	}
 	if (vars.checkH4 == true) {
-		ctx.drawImage(sprite,12,369,23,17,603,81.5,23,17);
+	ctx.drawImage(frog,12,0,23,17,603,81.5,23,17);
 	}
 	
 }
@@ -42,15 +43,15 @@ function drawLilyPads() {
 //draws text at the bottom of the screen with game info 
 function drawText() {
 	ctx.font = "bold 15pt arial";
-	ctx.fillStyle="#0FD183";
+	ctx.fillStyle="#000000";
 	//ctx.fillText("Level "+vars.level,100,545);
 	ctx.font = "bold 15pt arial";
 	ctx.fillText("Score: "+vars.score,200,562);
 	ctx.fillText("Highscore: "+vars.highscore,500,562);
-	var secondsLeft = 30 - (Math.floor(vars.time/60));
+	var secondsLeft = 40 - (Math.floor(vars.time/60));
 	secondsLeft.toFixed(0);
 	if ((secondsLeft < 10) && (secondsLeft > 3)) {
-		ctx.fillStyle="#D1B10F";
+		ctx.fillStyle="#2F4F4F";
 	}
 	if (secondsLeft <= 3) {
 		ctx.fillStyle="#0FD1830";
@@ -64,6 +65,7 @@ function checkHome() {
 		if ((vars.frogX > 7) && (vars.frogX < 29)) {
 			vars.checkH1 = true;
 			vars.landedFrog = true;
+			console.log("aqui");
 			if (((vars.flyPresent == true) && vars.flyLilyNum === 1)) {
 				vars.flyBonus = true;
 				vars.lastFlyBonus = Date.now();

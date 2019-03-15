@@ -3,17 +3,20 @@
 }
 
 canvas {
+ 
   background-color: #c2946c;
   padding: 5px;
-  margin: 10px;
-  border-width: 60px;
-  border-color: #b65934;
+  margin: 80px;
+  border-width: 20px;
+  border-color: rgb(229, 233, 240);
   border-style: solid;
  
 }
 
 body {
-  border-color: #5e7a45; 
+  background-color: transparent;
+  border-color: #BDB76B; 
+  background-image: url("assets/field.png");
 }
 
 #sprite {
@@ -44,7 +47,52 @@ display: none;
   display:none;
 }
 
-    #fans{
+#dirt{
+  display: none;
+  }
+
+#frog{
+  display: none;
+    }
+
+#ball{
+  display: none;
+    }
+
+
+#trophy1{
+  display:none;
+    }
+#trophy2{
+  display:none
+}
+
+#trophy3{
+  display:none
+}
+#trophy4{
+  display:none
+
+}
+#log1{
+  display:none;
+    }
+#log2{
+  display:none
+}
+
+#log3{
+  display:none
+}
+#log4{
+  display:none
+}
+    
+#redflag{
+  display: none;
+  }
+
+#fans{
   display: none;
   }
 
