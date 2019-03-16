@@ -10,18 +10,21 @@ function init_game() {
 }
 
 /* initializes car positions and speeds */
+// vars -  gives read/write access to variables in:
+//read/write access to current variables vars.object
+
 function init_cars() {
 	vars.car = new Array();
 	vars.car.spacing = 90;
 	vars.car[0] = {};
 	vars.car[0].pX = 1000;
 	vars.car[0].pY = 460;
-	vars.car[0].speed = -0.8;
+	vars.car[0].speed = -0.1;
 	vars.car[0].len = 50;
 	vars.car[1] = {};
 	vars.car[1].pX = 0;
 	vars.car[1].pY = 428;
-	vars.car[1].speed = 1.3;
+	vars.car[1].speed = 3.3;
 	vars.car[1].len = 50;
 	vars.car[2] = {};
 	vars.car[2].pX = 800;
@@ -31,7 +34,7 @@ function init_cars() {
 	vars.car[3] = {};
 	vars.car[3].pX = 0;
 	vars.car[3].pY = 355;
-	vars.car[3].speed = 1.5;
+	vars.car[3].speed = 2.5;
 	vars.car[3].len = 50;
 	vars.car[4] = {};
 	vars.car[4].pX = 800;

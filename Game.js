@@ -20,7 +20,7 @@ function rungame(ctx) {
 	add_audio();
 	initialize();
 	
-    var ONE_FRAME_TIME = 1000 / 60 ;
+  var ONE_FRAME_TIME = 1000 / 60 ;
 	var mainloop = function() {
 		update();
 		draw(ctx);
@@ -355,10 +355,10 @@ function addPoints() {
 function gameOver() {
 
 	ctx.drawImage(redflag,260,180,300,250);
-	ctx.font = "bold 50pt Georgia";
-	ctx.font = "30pt Georgia";
+	ctx.font = "bold 25pt Georgia";
+	ctx.font = "25pt Georgia";
 	ctx.fillStyle="#000000";
-	ctx.fillText("Hit ENTER to start a new game!", 150, 150);
+	ctx.fillText("Hit ENTER to start a new player new game!", 100, 150);
 	ctx.drawImage(deadsprite,5,3,18,24,vars.frogX,vars.frogY,18,24);		
 }
 

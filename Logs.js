@@ -7,6 +7,9 @@ function init_game() {
 	}
 	
 }
+/* initializes car positions and speeds */
+// vars -  gives read/write access to variables in JS :
+//read/write access to current variables vars.object
 
 // initializes log positions and speeds 
 function init_logs() {

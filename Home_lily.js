@@ -7,6 +7,8 @@ function init_game() {
 	}
 	
 }
+
+
 // draws the game's lily pads 
 function drawLilyPads() {
   
@@ -22,7 +24,8 @@ function drawLilyPads() {
   
 	
 	
-
+/* initializes car positions and speeds */
+//read/write access to current variables vars.object
 	// If Frogger has landed on a Lily Pad, draw him on it
   
   if (vars.checkH1 == true) {
