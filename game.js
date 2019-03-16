@@ -361,3 +361,4 @@ function gameOver() {
 	ctx.fillText("Hit ENTER to start a new game!", 150, 150);
 	ctx.drawImage(deadsprite,5,3,18,24,vars.frogX,vars.frogY,18,24);		
 }
+
